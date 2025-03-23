@@ -37,7 +37,7 @@ public class Car extends Property {
 
     private void setYear(int year) {
         if (year > 0) {
-            if (year >= 1885 || year <= Year.now().getValue()) {
+            if (year >= 1885 && year <= Year.now().getValue()) {
                 this.year = year;
             }
             else {
