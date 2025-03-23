@@ -160,7 +160,7 @@ public class UserInteraction {
         }
     }
 
-	private void inputChoiceSellProperty() {
+    private void inputChoiceSellProperty() {
         showAllProperties();
 
         if (!properties.isEmpty()) {
