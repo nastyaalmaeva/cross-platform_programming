@@ -19,10 +19,12 @@ public class UserInteraction {
         System.out.println("Choose an action: ");
         System.out.println(" 1) Add Property");
         System.out.println(" 2) Delete Property");
-        System.out.println(" 3) Display information about all properties");
-        System.out.println(" 4) Restore an example list of properties");
-        System.out.println(" 5) Clear the list of properties");
-        System.out.println(" 6) Exit");
+        System.out.println(" 3) Sell Property");
+        System.out.println(" 4) Transfer Property");
+        System.out.println(" 5) Display information about all properties");
+        System.out.println(" 6) Restore an example list of properties");
+        System.out.println(" 7) Clear the list of properties");
+        System.out.println(" 8) Exit");
         System.out.println();
 
         System.out.print("Your choice: ");
@@ -56,13 +58,39 @@ public class UserInteraction {
             }
         } else if (choice == 3) {
             try {
+                if (properties.isEmpty()) {
+                    System.out.println("List of properties is empty.");
+                    waitForKeyPress();
+                } else {
+                    inputChoiceSellProperty();
+                    waitForKeyPress();
+                }
+            } catch (Exception e) {
+                System.err.println("Error during selling property: " + e.getMessage());
+                waitForKeyPress();
+            }
+        } else if (choice == 4) {
+            try {
+                if (properties.isEmpty()) {
+                    System.out.println("List of properties is empty.");
+                    waitForKeyPress();
+                } else {
+                    inputChoiceTransferProperty();
+                    waitForKeyPress();
+                }
+            } catch (Exception e) {
+                System.err.println("Error during transferring property: " + e.getMessage());
+                waitForKeyPress();
+            }
+        } else if (choice == 5) {
+            try {
                 showAllProperties();
                 waitForKeyPress();
             } catch (Exception e) {
                 System.err.println("Error during showing all properties: " + e.getMessage());
                 waitForKeyPress();
             }
-        } else if (choice == 4) {
+        } else if (choice == 6) {
             try {
                 restoreExampleList();
                 System.out.println("Example list of properties has been restored.");
@@ -71,7 +99,7 @@ public class UserInteraction {
                 System.err.println("Error during restoring example list: " + e.getMessage());
                 waitForKeyPress();
             }
-        } else if (choice == 5) {
+        } else if (choice == 7) {
             try {
                 properties.clear();
                 System.out.println("List of properties cleared successfully.");
@@ -80,7 +108,7 @@ public class UserInteraction {
                 System.err.println("Error during clearing the list: " + e.getMessage());
                 waitForKeyPress();
             }
-        } else if (choice == 6) {
+        } else if (choice == 8) {
             System.out.println("Exiting the application.");
             waitForKeyPress();
             System.exit(0);
@@ -129,6 +157,42 @@ public class UserInteraction {
             }
 
             properties.remove(number - 1);
+        }
+    }
+
+	private void inputChoiceSellProperty() {
+        showAllProperties();
+
+        if (!properties.isEmpty()) {
+            System.out.println();
+            System.out.print("Enter the number of the property to sell: ");
+
+            int number = scanner.nextInt();
+
+            if (number < 1 || number > properties.size()) {
+                throw new IndexOutOfBoundsException("Invalid property number.");
+            }
+
+            Property propertyToSell = properties.get(number - 1);
+            propertyToSell.sell();
+        }
+    }
+
+    private void inputChoiceTransferProperty() {
+        showAllProperties();
+
+        if (!properties.isEmpty()) {
+            System.out.println();
+            System.out.print("Enter the number of the property to transfer: ");
+
+            int number = scanner.nextInt();
+
+            if (number < 1 || number > properties.size()) {
+                throw new IndexOutOfBoundsException("Invalid property number.");
+            }
+
+            Property propertyToTransfer = properties.get(number - 1);
+            propertyToTransfer.transfer();
         }
     }
 
