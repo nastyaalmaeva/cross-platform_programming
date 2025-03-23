@@ -25,7 +25,7 @@ public class CountryHouse extends Property {
         return houseSquare;
     }
 
-    public void setOwnershipSquare(int ownershipSquare) {
+    private void setOwnershipSquare(int ownershipSquare) {
         if (ownershipSquare > 0) {
             this.ownershipSquare = ownershipSquare;
         }
@@ -34,7 +34,7 @@ public class CountryHouse extends Property {
         }
     }
 
-    public void setHouseSquare(int houseSquare) {
+    private void setHouseSquare(int houseSquare) {
         if (houseSquare > 0) {
             if (houseSquare <= getOwnershipSquare()) {
                 this.houseSquare = houseSquare;

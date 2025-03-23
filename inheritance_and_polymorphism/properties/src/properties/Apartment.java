@@ -15,11 +15,11 @@ public class Apartment extends Property {
         return 0.001 * getSquare() * getWorth();
     }
 
-    public int getSquare() {
+    private int getSquare() {
         return square;
     }
 
-    public void setSquare(int square) {
+    private void setSquare(int square) {
         if (square > 0) {
             this.square = square;
         }
