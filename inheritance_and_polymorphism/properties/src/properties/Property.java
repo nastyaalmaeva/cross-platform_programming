@@ -5,7 +5,7 @@ import java.util.Objects;
 public abstract class Property {
     private double worth;
 
-    public Property(double worth) {
+    protected Property(double worth) {
         setWorth(worth);
     }
 
