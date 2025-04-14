@@ -14,7 +14,7 @@ public class Car extends Property {
     }
 
     @Override
-    public Object calculateTax() {
+    public double calculateTax() {
         return 0.1 * getVolume() * getWorth();
     }
 

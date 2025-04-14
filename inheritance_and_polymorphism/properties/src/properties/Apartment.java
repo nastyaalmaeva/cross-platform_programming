@@ -11,7 +11,7 @@ public class Apartment extends Property {
     }
 
     @Override
-    public Object calculateTax() {
+    public double calculateTax() {
         return 0.001 * getSquare() * getWorth();
     }
 

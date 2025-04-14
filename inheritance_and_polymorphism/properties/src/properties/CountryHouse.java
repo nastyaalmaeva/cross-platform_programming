@@ -13,7 +13,7 @@ public class CountryHouse extends Property {
     }
 
     @Override
-    public Object calculateTax() {
+    public double calculateTax() {
         return (0.0002 * getOwnershipSquare() + 0.01 * getHouseSquare()) * getWorth();
     }
 

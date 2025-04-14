@@ -17,7 +17,7 @@ public abstract class Property {
         System.out.println("The property has been transferred.");
     }
 
-    public abstract Object calculateTax();
+    public abstract double calculateTax();
 
     public double getWorth() {
         return worth;
