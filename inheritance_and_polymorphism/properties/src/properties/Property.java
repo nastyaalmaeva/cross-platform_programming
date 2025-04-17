@@ -48,6 +48,7 @@ public abstract class Property {
     @Override
     public String toString() {
         return  "Class: " + this.getClass().getSimpleName() + "\n" +
-                "Worth: " + getWorth();
+                "Worth: " + getWorth() + "\n" +
+                "Tax: " + calculateTax();
     }
 }

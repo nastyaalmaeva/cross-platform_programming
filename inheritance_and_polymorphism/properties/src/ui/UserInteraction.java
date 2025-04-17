@@ -212,19 +212,29 @@ public class UserInteraction {
     private void restoreExampleList() {
         properties.clear();
 
-        Property luxuryApartment = new Apartment(1000000, 50);
-        Property sportsCar = new Car(500000, 2, 2015);
-        Property countrysideCottage = new CountryHouse(2000000, 500, 100);
-        Property downtownApartment = new Apartment(1500000, 75);
-        Property familyCar = new Car(300000, 1.6, 2010);
-        Property summerHouse = new CountryHouse(1000000, 300, 80);
-        Property cozyApartment = new Apartment(800000, 40);
-        Property vintageCar = new Car(700000, 3.0, 2020);
-        Property luxuryVilla = new CountryHouse(2500000, 600, 120);
-        Property modernApartment = new Apartment(1200000, 60);
+        Property apartment1 = new Apartment(1000000, 50, "KAPT-12345", "123 Main St, City", 5, 2010);
+        Property apartment2 = new Apartment(1500000, 75, "KAPT-23456", "456 Oak Ave, Town", 10, 2015);
+        Property apartment3 = new Apartment(800000, 40, "KAPT-34567", "789 Pine Blvd, Village", 3, 2008);
+        Property apartment4 = new Apartment(1200000, 60, "KAPT-45678", "101 Elm St, Metropolis", 15, 2018);
+        Property apartment5 = new Apartment(950000, 55, "KAPT-56789", "202 Maple Rd, Suburb", 7, 2012);
 
-        properties.addAll(Arrays.asList(luxuryApartment, sportsCar, countrysideCottage, downtownApartment,
-                familyCar, summerHouse, cozyApartment, vintageCar, luxuryVilla, modernApartment));
+        Property car1 = new Car(500000, 2.0, 2015, "A123BC", "Sedan", "BMW X5");
+        Property car2 = new Car(300000, 1.6, 2010, "D456EF", "Hatchback", "Toyota Corolla");
+        Property car3 = new Car(700000, 3.0, 2020, "G789HI", "SUV", "Audi Q7");
+        Property car4 = new Car(250000, 1.8, 2017, "J012KL", "Sedan", "Honda Civic");
+        Property car5 = new Car(450000, 2.4, 2019, "M345NO", "Crossover", "Mazda CX-5");
+
+        Property house1 = new CountryHouse(2000000, 500, 100, "LAND-12345", "1 Country Lane, Rural", 2, 2005);
+        Property house2 = new CountryHouse(1000000, 300, 80, "LAND-23456", "2 Forest Path, Countryside", 1, 2000);
+        Property house3 = new CountryHouse(2500000, 600, 120, "LAND-34567", "3 Lake View, Outskirts", 3, 2012);
+        Property house4 = new CountryHouse(1800000, 450, 95, "LAND-45678", "4 Mountain Rd, Highlands", 2, 2008);
+        Property house5 = new CountryHouse(3000000, 700, 150, "LAND-56789", "5 Seaside Dr, Coast", 2, 2015);
+
+        properties.addAll(Arrays.asList(
+            apartment1, apartment2, apartment3, apartment4, apartment5,
+            car1, car2, car3, car4, car5,
+            house1, house2, house3, house4, house5
+        ));
     }
 
     private void addIfUnique(Property property) {
@@ -237,36 +247,84 @@ public class UserInteraction {
 
     private Apartment createApartment() {
         System.out.println("*** Creating Apartment ***");
+        scanner.nextLine();
+        
         System.out.print("Enter the worth of the apartment: ");
         double worth = scanner.nextDouble();
+        
         System.out.print("Enter the square of the apartment: ");
         int square = scanner.nextInt();
+        scanner.nextLine();
+        
+        System.out.print("Enter the cadastral number of the apartment: ");
+        String cadastralNumber = scanner.nextLine();
+        
+        System.out.print("Enter the address of the apartment: ");
+        String address = scanner.nextLine();
+        
+        System.out.print("Enter the floors count of the apartment: ");
+        int floorsCount = scanner.nextInt();
+        
+        System.out.print("Enter the construction year of the apartment: ");
+        int constructionYear = scanner.nextInt();
 
-        return new Apartment(worth, square);
+        return new Apartment(worth, square, cadastralNumber, address, floorsCount, constructionYear);
     }
 
     private Car createCar() {
         System.out.println("*** Creating Car ***");
+        scanner.nextLine();
+        
         System.out.print("Enter the worth of the car: ");
         double worth = scanner.nextDouble();
+        
         System.out.print("Enter the engine volume of the car: ");
         double volume = scanner.nextDouble();
+        scanner.nextLine();
+        
         System.out.print("Enter the year of manufacture of the car: ");
         int year = scanner.nextInt();
+        scanner.nextLine();
+        
+        System.out.print("Enter the registration number of the car: ");
+        String registrationNumber = scanner.nextLine();
+        
+        System.out.print("Enter the vehicle type of the car: ");
+        String vehicleType = scanner.nextLine();
+        
+        System.out.print("Enter the make and model of the car: ");
+        String makeAndModel = scanner.nextLine();
 
-        return new Car(worth, volume, year);
+        return new Car(worth, volume, year, registrationNumber, vehicleType, makeAndModel);
     }
 
     private CountryHouse createCountryHouse() {
         System.out.println("*** Creating Country House ***");
+        scanner.nextLine();
+        
         System.out.print("Enter the worth of the country house: ");
         double worth = scanner.nextDouble();
+        
         System.out.print("Enter the ownership square of the country house: ");
         int ownershipSquare = scanner.nextInt();
+        
         System.out.print("Enter the house square of the country house: ");
         int houseSquare = scanner.nextInt();
+        scanner.nextLine();
+        
+        System.out.print("Enter the cadastral number of the country house: ");
+        String cadastralNumber = scanner.nextLine();
+        
+        System.out.print("Enter the address of the country house: ");
+        String address = scanner.nextLine();
+        
+        System.out.print("Enter the floors count of the country house: ");
+        int floorsCount = scanner.nextInt();
+        
+        System.out.print("Enter the construction year of the country house: ");
+        int constructionYear = scanner.nextInt();
 
-        return new CountryHouse(worth, ownershipSquare, houseSquare);
+        return new CountryHouse(worth, ownershipSquare, houseSquare, cadastralNumber, address, floorsCount, constructionYear);
     }
 
     private static void clearConsole() {
